@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 180" width="700" height="180">
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#64748b"/>
+    </marker>
+  </defs>
+
+  <!-- Step 1: Create Metadata -->
+  <rect x="20" y="65" width="140" height="50" rx="8" fill="#ffffff" stroke="#cbd5e1" stroke-width="2"/>
+  <text x="90" y="95" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="14" fill="#001933">Create Metadata</text>
+
+  <!-- Arrow 1 -->
+  <line x1="160" y1="90" x2="195" y2="90" stroke="#64748b" stroke-width="2" marker-end="url(#arrowhead)"/>
+
+  <!-- Decision Diamond: Choose Method -->
+  <polygon points="270,50 340,90 270,130 200,90" fill="#ffffff" stroke="#cbd5e1" stroke-width="2"/>
+  <text x="270" y="86" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="12" fill="#001933">Choose</text>
+  <text x="270" y="100" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="12" fill="#001933">Method</text>
+
+  <!-- Arrow to Upload (top branch) -->
+  <line x1="270" y1="50" x2="270" y2="30" stroke="#64748b" stroke-width="2"/>
+  <line x1="270" y1="30" x2="430" y2="30" stroke="#64748b" stroke-width="2" marker-end="url(#arrowhead)"/>
+
+  <!-- Arrow to Download (bottom branch) -->
+  <line x1="270" y1="130" x2="270" y2="150" stroke="#64748b" stroke-width="2"/>
+  <line x1="270" y1="150" x2="430" y2="150" stroke="#64748b" stroke-width="2" marker-end="url(#arrowhead)"/>
+
+  <!-- Upload File box -->
+  <rect x="435" y="5" width="130" height="50" rx="8" fill="#ffffff" stroke="#cbd5e1" stroke-width="2"/>
+  <text x="500" y="35" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="14" fill="#001933">Upload File</text>
+
+  <!-- Download from URL box -->
+  <rect x="435" y="125" width="150" height="50" rx="8" fill="#ffffff" stroke="#cbd5e1" stroke-width="2"/>
+  <text x="510" y="155" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="14" fill="#001933">Download from URL</text>
+
+  <!-- Arrow from Upload to Model Ready -->
+  <line x1="565" y1="30" x2="600" y2="30" stroke="#64748b" stroke-width="2"/>
+  <line x1="600" y1="30" x2="600" y2="65" stroke="#64748b" stroke-width="2" marker-end="url(#arrowhead)"/>
+
+  <!-- Arrow from Download to Model Ready -->
+  <line x1="585" y1="150" x2="600" y2="150" stroke="#64748b" stroke-width="2"/>
+  <line x1="600" y1="150" x2="600" y2="115" stroke="#64748b" stroke-width="2" marker-end="url(#arrowhead)"/>
+
+  <!-- Model Ready (highlighted) -->
+  <rect x="540" y="70" width="120" height="50" rx="8" fill="#E5F0C6" stroke="#A3CD39" stroke-width="2"/>
+  <text x="600" y="100" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="14" font-weight="600" fill="#001933">Model Ready</text>
+</svg>

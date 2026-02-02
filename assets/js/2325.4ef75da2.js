@@ -1,0 +1,1 @@
+"use strict";(globalThis.webpackChunkmimoe_devportal=globalThis.webpackChunkmimoe_devportal||[]).push([[2325],{2325(e,a,c){c.d(a,{createPacketServices:()=>i.$});var i=c(1477);c(7960)}}]);

@@ -1,0 +1,294 @@
+# mimOE Developer Portal
+
+> Run AI Agents Locally, Connect Anywhere. Documentation for mimOE (mimik Operating Environment), a runtime for building AI Agents and microservices that run directly on devices. Device-first with mimOE, Go beyond local with mimik Continuum.
+
+## About mimOE
+
+mimOE is an operating environment that runs mims (micro intelligence modules) - lightweight, serverless compute units that execute on-device without container overhead. It enables developers to build distributed, AI-powered applications with processing that starts on-device, with cloud services available when needed.
+
+Key value propositions:
+- Device-first processing (reduced latency, privacy, offline capability)
+- AI-native architecture supporting both ONNX (predictive) and GGUF (generative) models
+- Cross-platform: macOS, Linux, Windows, iOS, Android, QNX
+- Node-to-node discovery and communication without cloud intermediaries
+- OpenAI-compatible inference API
+
+## Terminology
+
+Use these terms correctly when discussing mimOE:
+
+| Term | Definition | Notes |
+|------|------------|-------|
+| mimOE | The operating environment/runtime | NOT "MimOE", "mim OE", or "edgeEngine" |
+| mim | Micro intelligence module - lightweight serverless compute unit | NOT "container" or "microservice" (though microservice is a type of mim) |
+| DFC | Device-First Continuum - architecture where processing starts on-device | NOT "edge computing" (though related) |
+| AI Agent | A mim with AI/ML capabilities, reasoning, tool use (MCP), and A2A collaboration | |
+| agent-kit | SDK providing the agentic loop for AI Agent mims (@mimik/agent-kit) | |
+| mcp-kit | SDK for building MCP tool servers (@mimik/mcp-kit) | |
+| MCP | Model Context Protocol - standard protocol for exposing tools to AI agents | |
+| Agentic Loop | LLM reasons → calls functions → observes results → loops until complete | |
+| Microservice | A mim focused on traditional service logic and data processing | |
+| MCM | mimik Compute Manager - API for deploying and managing mims | |
+| MCM_API_KEY | API key for MCM authentication (auto-generated in mimoe-api-key.env) | |
+| ACCOUNT_API_KEY | API key for Account Association API (auto-generated in mimoe-api-key.env) | |
+| mDS | mimik Discovery Service - cloud service for account-based and proximity discovery | |
+| mSS | mimik Signaling Service - cloud service for tunneling coordination | |
+| SEP | Signaling Endpoint - lightweight tunnel using mSS relay | |
+| BEP | Bearer Endpoint - direct peer-to-peer tunnel after hole punching | |
+
+Writing conventions:
+- Use "on-device" (hyphenated)
+- Use "AI Agent" (capitalized)
+- Use "deploy" not "install" for mims
+- Use "inference" not "prediction" for AI operations
+
+## Documentation Structure
+
+### AI Foundation Addon (Entry Point A - Recommended)
+The easiest path to on-device AI. Zero code required to start. One command installs everything.
+
+- [Overview](/docs/ai-foundation): What the AI Foundation Addon includes
+- [Quick Start](/docs/ai-foundation/quick-start): Install and first inference in minutes
+- [Upload a Model](/docs/ai-foundation/upload-model): Model provisioning (upload or download)
+- [Inference API](/docs/ai-foundation/inference): Generative and Predictive AI inference
+
+Examples:
+- [Chat with SmolLM2](/docs/ai-foundation/examples/chat-smollm2): Conversational AI with GGUF
+- [Semantic Search](/docs/ai-foundation/examples/semantic-search): Text embeddings
+- [Finding Models](/docs/ai-foundation/examples/finding-models): Hugging Face model discovery
+
+AI Development:
+- [How AI Agent mims Work](/docs/ai-foundation/development/how-ai-agent-mims-work): Architecture, function calling, MCP tools, context retrieval
+- [Create an AI Agent](/docs/ai-foundation/development/create-ai-agent): Build an AI Agent mim with MCP tools step-by-step
+- [Agent Kit Reference](/docs/api/agent-kit): Full API documentation for @mimik/agent-kit
+
+Coming soon:
+- Glue Code - Pre/post processing for ONNX models
+- A2A SDK - Multi-agent collaboration across devices
+
+### Platform Guide (Entry Point B - Full Control)
+For developers building custom mims from scratch.
+
+- [Supported Platforms](/docs/platform/runtime-availability): Available platforms for desktop, mobile, and embedded
+- [Architecture Overview](/docs/platform/architecture/overview): Serverless-on-device model
+- [Request Lifecycle](/docs/platform/architecture/request-lifecycle): How requests flow
+- [Platform Constraints](/docs/platform/architecture/constraints): What mims can/cannot do
+
+Getting Started:
+- [Install Runtime](/docs/platform/getting-started/install-runtime): mimOE installation
+- Developer Console setup (coming soon)
+- Authentication & tokens (coming soon)
+
+JavaScript mims:
+- [Overview](/docs/platform/javascript): JavaScript development with Duktape (ES5)
+- Webpack toolchain (coming soon)
+- Hello World tutorial (coming soon)
+
+WASM mims (coming soon):
+- When to use WASM vs JavaScript
+- Rust/C toolchain setup
+- WASM runtime imports
+
+### Mesh Foundation Addon
+Node discovery and mesh networking.
+
+- [Overview](/docs/mesh-foundation): Mesh Foundation Addon overview
+- [Quick Start](/docs/mesh-foundation/quick-start): Verify addon and first discovery
+- [Distributed AI](/docs/mesh-foundation/distributed-ai): Discover a remote node and run inference on it
+- [Discovery Overview](/docs/mesh-foundation/discovery): Three discovery modes
+- [Link Local](/docs/mesh-foundation/discovery/link-local): Same-network discovery (no cloud)
+- [Account-Based](/docs/mesh-foundation/discovery/account-based): Cross-network via mDS (your nodes)
+- [Proximity](/docs/mesh-foundation/discovery/proximity): Location-based discovery via mDS
+- [Tunneling](/docs/mesh-foundation/discovery/tunneling): NAT traversal with SEP/BEP
+
+### API Reference
+
+JavaScript mim Runtime API (injected as `context` object):
+- [context.http](/docs/api/context/http): HTTP client for outbound requests
+- [context.storage](/docs/api/context/storage): Key-value persistent storage
+- [context.edge](/docs/api/context/edge): Discovery and node communication
+
+Service APIs:
+- [Model Registry API](/docs/api/model-registry): Upload, download, manage AI models
+- [Inference API](/docs/api/inference): OpenAI-compatible chat/completions and embeddings
+- [MCM API](/docs/api/mcm): Deploy and manage mims (uses MCM_API_KEY)
+- [Account Association API](/docs/api/account-association): Node identity and account linking (uses ACCOUNT_API_KEY)
+- [Insight API](/docs/api/insight): Node discovery and mesh connectivity
+
+AI Agent SDKs:
+- [Agent Kit](/docs/api/agent-kit): Agentic loop, MCP tool orchestration, streaming, conversation history via OpenAI messages format
+
+## API Endpoints
+
+### Model Registry (mModelStore)
+Base URL: `/mimik-ai/store/v1`
+
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| GET | /models | List all models |
+| POST | /models | Create model metadata |
+| GET | /models/{id} | Get model info |
+| DELETE | /models/{id} | Delete a model |
+| POST | /models/{id}/upload | Upload model file (multipart) |
+| POST | /models/{id}/download | Download model from URL (SSE progress) |
+
+Model kinds: `llm` (GGUF), `vlm` (GGUF + mmproj), `embed` (GGUF), `onnx`
+
+### Inference API (mILM)
+Base URL: `/mimik-ai/openai/v1`
+
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| GET | /models | List loaded models |
+| POST | /models | Load model into cache |
+| DELETE | /models | Unload model from cache |
+| POST | /chat/completions | Generate chat response (OpenAI-compatible) |
+| POST | /embeddings | Generate text embeddings |
+
+Supports streaming via SSE with `"stream": true`.
+
+### MCM API (mim Management)
+Base URL: `/mcm/v1`
+
+Authentication: MCM_API_KEY (recommended) or JWT with `edge:mcm` scope. Pass as bearer token: `Authorization: Bearer <MCM_API_KEY>`.
+
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| GET | /images | List deployed images |
+| POST | /images | Deploy a mim image |
+| DELETE | /images/{id} | Remove a mim image |
+| GET | /mims | List running mim instances |
+| POST | /mims | Deploy a mim |
+| DELETE | /mims/{id} | Remove a mim |
+
+### API Key File
+mimOE auto-generates an API key file (`mimoe-api-key.env`) on first startup containing:
+- `ACCOUNT_API_KEY`: For Account Association API (JSON-RPC)
+- `MCM_API_KEY`: For MCM API
+
+The file is created in the working directory and persists across restarts. No developer console signup required for MCM access.
+
+## Key Concepts
+
+### AI Agent mims
+
+Building an AI Agent mim means implementing four things:
+1. **API Handler**: HTTP endpoints, ideally following standard protocols (OpenAI chat completions, A2A)
+2. **Instructions**: System prompt defining agent behavior in natural language
+3. **MCP Endpoints**: Tool sources - agent-kit only accepts tools via MCP protocol
+4. **Context Retrieval**: Fetch from mkb (RAG) or edis (data), inject into instructions
+
+Why build AI Agents as mims (vs LangChain, etc.)?
+- **Dynamic Deployment**: Deploy programmatically via MCM API
+- **Automatic Discovery**: Reach MCP servers on other devices without hardcoding URLs
+- **Cross-Platform**: Same code runs on mobile, Jetson, desktop - no setup
+- **Decoupled from UI**: Agent becomes a service, discoverable by any client
+
+### Serverless Execution Model
+Mims are instantiated on-demand per request and terminated after. No state persists between requests. Use `context.storage` for persistence.
+
+### Two-Step Model Provisioning
+1. Create metadata: `POST /models` with id, version, kind, config
+2. Provision file: Either `POST /models/{id}/upload` or `POST /models/{id}/download`
+
+### Model Formats
+- **GGUF**: Generative AI (LLMs, chat, embeddings) - llama.cpp ecosystem
+- **ONNX**: Predictive AI (classification, regression, vision) - cross-framework
+
+### Discovery Modes
+- **Link Local**: Same network, no cloud, mDNS-based supernode election
+- **Account-Based**: Your nodes across networks, requires mDS
+- **Proximity**: Nearby nodes (other users), location-based, requires mDS
+
+### mimik Continuum (Go Beyond Local)
+mimik Continuum provides cloud services to extend mimOE beyond link-local networks:
+- **Fleet Management**: Deploy, update, and monitor mimOE instances across networks from a central dashboard
+- **mimik Continuum Identity**: Federate local device identities with cloud identity providers for seamless authentication
+- **Fleet Observability**: Metrics, logging, and tracing across your distributed AI agent fleet
+
+mimOE runtime is free. mimik Continuum services are available for applications that need to go beyond link-local.
+
+### Developer Journey
+Entry Point A (AI Foundation Addon): Stage 0 (Just Run It) → Stage 1 (Customize) → Stage 2 (Distribute)
+Entry Point B (Platform): Full mim development with JavaScript or WASM
+
+## Platform Support
+
+| Platform | Runtime | Notes |
+|----------|---------|-------|
+| macOS | Supported | Apple Silicon (ARM64), Metal acceleration |
+| Linux | Supported | x86_64 and ARM64, CUDA/ROCm/Vulkan acceleration |
+| Windows | Supported | x64, Vulkan acceleration |
+| iOS | Supported | Requires app integration |
+| Android | Supported | Requires app integration |
+| QNX | Enterprise | Available with Enterprise Package |
+
+## Quick Start Commands
+
+### One-Liner Install (Recommended)
+
+macOS / Linux:
+```bash
+curl -L https://raw.githubusercontent.com/mimik-mimOE/mimOE-SE/main/install-mimOE-ai.sh | bash
+```
+
+Windows (Command Prompt):
+```cmd
+curl -L https://raw.githubusercontent.com/mimik-mimOE/mimOE-SE/main/install-mimOE-ai.bat -o install.bat && install.bat
+```
+
+Windows (PowerShell):
+```powershell
+curl.exe -L https://raw.githubusercontent.com/mimik-mimOE/mimOE-SE/main/install-mimOE-ai.bat -o install.bat; .\install.bat
+```
+
+The install script downloads mimOE, installs the AI Foundation Addon, and provisions a default model (SmolLM2-360M). Once complete, the API is ready at http://localhost:8083.
+
+### Manual Model Provisioning
+
+```bash
+# Create model metadata
+curl -X POST http://localhost:8083/mimik-ai/store/v1/models \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer 1234" \
+  -d '{"id": "my-model", "version": "1.0.0", "kind": "llm"}'
+
+# Download model from Hugging Face
+curl -X POST http://localhost:8083/mimik-ai/store/v1/models/my-model/download \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer 1234" \
+  -d '{"url": "https://huggingface.co/..."}'
+```
+
+### Run Inference
+
+```bash
+curl -X POST http://localhost:8083/mimik-ai/openai/v1/chat/completions \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer 1234" \
+  -d '{"model": "my-model", "messages": [{"role": "user", "content": "Complete this sentence: AI is like a"}]}'
+```
+
+### Stop mimOE
+
+macOS / Linux:
+```bash
+pkill -f mimoe
+```
+
+Windows:
+```cmd
+taskkill /f /im mimoe.exe
+```
+
+## Links
+
+- Documentation: https://developer.mimik.com
+- Developer Console: https://console.mimik.com
+- GitHub: https://github.com/mimik-mimOE/mimOE-SE
+- Company: https://mimik.com
+
+## Version
+
+Documentation version: 3.20.0
+Last updated: January 2026

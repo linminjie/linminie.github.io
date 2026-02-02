@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 120" width="900" height="120">
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#64748b"/>
+    </marker>
+  </defs>
+
+  <!-- Step 1: Start mimOE (highlighted) -->
+  <rect x="10" y="35" width="130" height="50" rx="8" fill="#E5F0C6" stroke="#A3CD39" stroke-width="2"/>
+  <text x="75" y="65" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="14" font-weight="600" fill="#001933">Start mimOE</text>
+
+  <!-- Arrow 1 -->
+  <line x1="140" y1="60" x2="175" y2="60" stroke="#64748b" stroke-width="2" marker-end="url(#arrowhead)"/>
+
+  <!-- Step 2: Create Model Metadata -->
+  <rect x="180" y="35" width="150" height="50" rx="8" fill="#ffffff" stroke="#cbd5e1" stroke-width="2"/>
+  <text x="255" y="58" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="13" fill="#001933">Create Model</text>
+  <text x="255" y="74" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="13" fill="#001933">Metadata</text>
+
+  <!-- Arrow 2 -->
+  <line x1="330" y1="60" x2="365" y2="60" stroke="#64748b" stroke-width="2" marker-end="url(#arrowhead)"/>
+
+  <!-- Step 3: Download/Upload File -->
+  <rect x="370" y="35" width="150" height="50" rx="8" fill="#ffffff" stroke="#cbd5e1" stroke-width="2"/>
+  <text x="445" y="58" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="13" fill="#001933">Download/Upload</text>
+  <text x="445" y="74" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="13" fill="#001933">Model</text>
+
+  <!-- Arrow 3 -->
+  <line x1="520" y1="60" x2="555" y2="60" stroke="#64748b" stroke-width="2" marker-end="url(#arrowhead)"/>
+
+  <!-- Step 4: Call Inference API -->
+  <rect x="560" y="35" width="150" height="50" rx="8" fill="#ffffff" stroke="#cbd5e1" stroke-width="2"/>
+  <text x="635" y="58" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="13" fill="#001933">Call Inference</text>
+  <text x="635" y="74" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="13" fill="#001933">API</text>
+
+  <!-- Arrow 4 -->
+  <line x1="710" y1="60" x2="745" y2="60" stroke="#64748b" stroke-width="2" marker-end="url(#arrowhead)"/>
+
+  <!-- Step 5: Get Results (highlighted) -->
+  <rect x="750" y="35" width="130" height="50" rx="8" fill="#E5F0C6" stroke="#A3CD39" stroke-width="2"/>
+  <text x="815" y="65" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="14" font-weight="600" fill="#001933">Get Results</text>
+</svg>

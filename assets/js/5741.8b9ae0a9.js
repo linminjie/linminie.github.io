@@ -1,0 +1,1 @@
+(globalThis.webpackChunkmimoe_devportal=globalThis.webpackChunkmimoe_devportal||[]).push([[5741],{5741(){}}]);

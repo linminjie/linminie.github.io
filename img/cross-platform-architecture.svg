@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 550 320">
+  <!-- Background -->
+  <rect width="550" height="320" fill="#F9FAFB" rx="12"/>
+
+  <!-- mimOE Core box -->
+  <rect x="120" y="20" width="310" height="170" rx="10" fill="#FFFFFF" stroke="#A3CD39" stroke-width="2"/>
+  <text x="275" y="45" text-anchor="middle" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#001933">mimOE Core</text>
+
+  <!-- Layer 3 (top): Platform APIs -->
+  <rect x="140" y="55" width="270" height="35" rx="6" fill="#E5F0C6" stroke="#A3CD39" stroke-width="1.5"/>
+  <text x="275" y="78" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" font-weight="500" fill="#4D7C0F">Platform APIs</text>
+
+  <!-- Layer 2 (middle): JS Runtime + WASM Engine side by side -->
+  <rect x="140" y="95" width="130" height="35" rx="6" fill="#E5F0C6" stroke="#A3CD39" stroke-width="1.5"/>
+  <text x="205" y="118" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" font-weight="500" fill="#4D7C0F">JS Runtime</text>
+
+  <rect x="280" y="95" width="130" height="35" rx="6" fill="#E5F0C6" stroke="#A3CD39" stroke-width="1.5"/>
+  <text x="345" y="118" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" font-weight="500" fill="#4D7C0F">WASM Engine</text>
+
+  <!-- Layer 1 (bottom): Core Runtime -->
+  <rect x="140" y="135" width="270" height="40" rx="6" fill="#A3CD39" stroke="#7BC12E" stroke-width="1.5"/>
+  <text x="275" y="160" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" font-weight="600" fill="#001933">Core Runtime</text>
+
+  <!-- Arrow down to platforms -->
+  <line x1="275" y1="190" x2="275" y2="220" stroke="#6B7280" stroke-width="2"/>
+  <line x1="275" y1="220" x2="180" y2="220" stroke="#6B7280" stroke-width="2"/>
+  <line x1="275" y1="220" x2="380" y2="220" stroke="#6B7280" stroke-width="2"/>
+  <line x1="180" y1="220" x2="180" y2="235" stroke="#6B7280" stroke-width="2"/>
+  <line x1="380" y1="220" x2="380" y2="235" stroke="#6B7280" stroke-width="2"/>
+
+  <!-- Desktop platform -->
+  <rect x="80" y="240" width="200" height="55" rx="8" fill="#E0F2FE" stroke="#0EA5E9" stroke-width="2"/>
+  <text x="180" y="263" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" font-weight="600" fill="#0369A1">Desktop</text>
+  <text x="180" y="282" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="#6B7280">macOS / Linux / Windows</text>
+
+  <!-- Mobile platform -->
+  <rect x="300" y="240" width="170" height="55" rx="8" fill="#F3E8FF" stroke="#A855F7" stroke-width="2"/>
+  <text x="385" y="263" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" font-weight="600" fill="#7E22CE">Mobile</text>
+  <text x="385" y="282" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="#6B7280">iOS / Android</text>
+</svg>

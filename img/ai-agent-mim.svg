@@ -1,0 +1,84 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 480">
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#6B7280"/>
+    </marker>
+    <marker id="arrowhead-green" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#A3CD39"/>
+    </marker>
+    <marker id="arrowhead-purple" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#A855F7"/>
+    </marker>
+    <marker id="arrowhead-amber" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#F59E0B"/>
+    </marker>
+    <marker id="arrowhead-cyan" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#0EA5E9"/>
+    </marker>
+  </defs>
+
+  <!-- Background -->
+  <rect width="700" height="480" fill="#F9FAFB" rx="12"/>
+
+  <!-- LLM Model Box (top) - centered with AI Agent box -->
+  <rect x="225" y="50" width="150" height="50" rx="8" fill="#F3E8FF" stroke="#A855F7" stroke-width="2"/>
+  <text x="300" y="80" text-anchor="middle" font-family="system-ui, sans-serif" font-size="14" font-weight="600" fill="#7E22CE">LLM Model</text>
+
+  <!-- Inference arrow (from AI Agent UP to LLM) -->
+  <line x1="300" y1="160" x2="300" y2="110" stroke="#A855F7" stroke-width="2" marker-end="url(#arrowhead-purple)"/>
+  <text x="330" y="140" font-family="system-ui, sans-serif" font-size="12" font-weight="500" fill="#7E22CE">inference</text>
+
+  <!-- HTTP Request Box (left) -->
+  <rect x="30" y="200" width="120" height="55" rx="8" fill="#E0F2FE" stroke="#0EA5E9" stroke-width="2"/>
+  <text x="90" y="222" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" font-weight="600" fill="#0369A1">HTTP Request</text>
+  <text x="90" y="240" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" fill="#6B7280">(user prompt)</text>
+
+  <!-- Arrow from HTTP Request to AI Agent -->
+  <line x1="150" y1="227" x2="185" y2="227" stroke="#0EA5E9" stroke-width="2" marker-end="url(#arrowhead)"/>
+
+  <!-- AI Agent Box (center) -->
+  <rect x="190" y="160" width="220" height="210" rx="10" fill="#FFFFFF" stroke="#A3CD39" stroke-width="3"/>
+
+  <!-- AI Agent Header -->
+  <text x="300" y="185" text-anchor="middle" font-family="system-ui, sans-serif" font-size="14" font-weight="700" fill="#001933">AI AGENT</text>
+  <text x="300" y="202" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#6B7280">(Your mim)</text>
+
+  <!-- agent-kit box inside -->
+  <rect x="210" y="215" width="180" height="35" rx="6" fill="#E5F0C6" stroke="#A3CD39" stroke-width="1.5"/>
+  <text x="300" y="238" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" font-weight="600" fill="#4D7C0F">agent-kit (agentic loop)</text>
+
+  <!-- Configuration list -->
+  <text x="210" y="270" font-family="system-ui, sans-serif" font-size="11" font-weight="600" fill="#374151">You implement:</text>
+  <text x="210" y="288" font-family="system-ui, sans-serif" font-size="11" fill="#6B7280">&#8226; API Handler</text>
+  <text x="210" y="304" font-family="system-ui, sans-serif" font-size="11" fill="#6B7280">&#8226; Instructions</text>
+  <text x="210" y="320" font-family="system-ui, sans-serif" font-size="11" fill="#6B7280">&#8226; MCP Endpoints</text>
+  <text x="210" y="336" font-family="system-ui, sans-serif" font-size="11" fill="#6B7280">&#8226; Context Retrieval</text>
+
+  <!-- HTTP Response Box (left, below request) -->
+  <rect x="30" y="280" width="120" height="55" rx="8" fill="#DCFCE7" stroke="#22C55E" stroke-width="2"/>
+  <text x="90" y="302" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" font-weight="600" fill="#15803D">HTTP Response</text>
+  <text x="90" y="320" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" fill="#6B7280">(agent response)</text>
+
+  <!-- Arrow from AI Agent to HTTP Response -->
+  <line x1="190" y1="307" x2="155" y2="307" stroke="#22C55E" stroke-width="2" marker-end="url(#arrowhead-green)"/>
+
+  <!-- Knowledge Source Box (right) -->
+  <rect x="550" y="195" width="130" height="95" rx="8" fill="#F0F9FF" stroke="#0EA5E9" stroke-width="2"/>
+  <text x="615" y="218" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" font-weight="600" fill="#0369A1">Knowledge</text>
+  <text x="615" y="234" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" font-weight="600" fill="#0369A1">Source</text>
+  <text x="615" y="258" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="#6B7280">&#8226; mkb (RAG)</text>
+  <text x="615" y="274" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="#6B7280">&#8226; edis (data)</text>
+
+  <!-- Arrow from AI Agent to Knowledge Source -->
+  <line x1="410" y1="255" x2="545" y2="255" stroke="#0EA5E9" stroke-width="2" marker-end="url(#arrowhead-cyan)"/>
+  <text x="478" y="245" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" font-weight="500" fill="#0369A1">context</text>
+  <text x="478" y="270" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" font-weight="500" fill="#0369A1">retrieval</text>
+
+  <!-- Tool call arrow (from AI Agent DOWN to MCP Tools) -->
+  <line x1="300" y1="370" x2="300" y2="415" stroke="#F59E0B" stroke-width="2" marker-end="url(#arrowhead-amber)"/>
+  <text x="330" y="398" font-family="system-ui, sans-serif" font-size="12" font-weight="500" fill="#B45309">tool call</text>
+
+  <!-- MCP Tools Box (bottom) -->
+  <rect x="225" y="420" width="150" height="50" rx="8" fill="#FEF3C7" stroke="#F59E0B" stroke-width="2"/>
+  <text x="300" y="450" text-anchor="middle" font-family="system-ui, sans-serif" font-size="14" font-weight="600" fill="#B45309">MCP Tools</text>
+</svg>
